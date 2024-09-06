@@ -8,7 +8,6 @@ public class Luzes {
     private String modelo;
 
 
-
     public Luzes(boolean estado){
         this.estado = estado;
     }
