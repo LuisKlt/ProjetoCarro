@@ -55,4 +55,8 @@ public class Suspencao {
         return this.getRegidez();
     }
 
+    public void substituir(){
+        System.out.println("Suspenção substituída!");
+    }
+
 }

@@ -7,11 +7,6 @@ public class Luzes {
     private boolean estado;
     private String modelo;
 
-
-    public Luzes(boolean estado){
-        this.estado = estado;
-    }
-
     public String getTipo() {
         return tipo;
     }
@@ -24,7 +19,7 @@ public class Luzes {
         return intensidade;
     }
 
-    public void setIntensidade(int intensidade) {
+    public void ajustarIntensidade(int intensidade) {
         this.intensidade = intensidade;
     }
 
@@ -52,32 +47,11 @@ public class Luzes {
         this.modelo = modelo;
     }
 
-    public boolean isestado() {
-        return estado;
+    public void ligar(){
+        this.setEstado(true);
     }
 
-    public void setestado(boolean estado) {
-        this.estado = estado;
+    public void desligar(){
+        this.setEstado(false);
     }
-
-    //Método toString
-    public String toString(){
-        String result=" ";
-
-        if(this.estado==true)	result += "\tLuzes ligadas!\n";
-        else result+= "\tLuzes apagadas!\n";
-
-        return result;
-    }
-
-    //Ligar
-    public void Ascender(){
-        setestado(true);
-    }
-
-    //Desligar
-    public void Apagar(){
-        setestado(false);
-    }
-
 }
