@@ -44,21 +44,22 @@ public class SistemaEletrico {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public boolean ligar() {
+        return this.verificarBateria() && this.getCapacidade() != 0;
+    }
+
+    public void desligar() {
+        this.estado = false;
     }
 
     public void substituirBateria(){
+        this.setCapacidade(100);
+        this.setVoltagem(14.0);
         System.out.println("Bateria substituída!");
     }
 
     public boolean testarSistema(){
-        if (this.voltagem >= 13.8 && this.voltagem < 14.4 && this.capacidade != 0){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return this.voltagem >= 13.8 && this.voltagem < 14.4 && this.capacidade != 0;
     }
 
 }

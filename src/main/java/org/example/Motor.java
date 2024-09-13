@@ -6,7 +6,7 @@ public class Motor {
     private int potencia;
     private double cilindrada;
     private String marca;
-    private boolean estado;
+    private boolean ligado;
 
     public String getTipo() {
         return tipo;
@@ -41,15 +41,15 @@ public class Motor {
     }
 
     public boolean verificarEstado() {
-        return estado;
+        return ligado;
     }
 
-    public void ligar() {
-        this.estado = true;
+    public boolean ligar(boolean sistemaDeCombustivel) {
+        return this.ligado = sistemaDeCombustivel;
     }
 
     public void desligar() {
-        this.estado = false;
+        this.ligado = false;
     }
 
 }

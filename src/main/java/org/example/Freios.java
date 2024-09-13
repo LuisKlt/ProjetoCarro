@@ -6,6 +6,7 @@ public class Freios {
     private String marca;
     private double tamanho;
     private double nivelDeDesgaste;
+    private boolean acionado;
 
     public String getTipo() {
         return tipo;
@@ -55,4 +56,11 @@ public class Freios {
         System.out.println("Freio ajustado!");
     }
 
+    public boolean isAcionado() {
+        return acionado;
+    }
+
+    public void setAcionado(boolean acionado) {
+        this.acionado = acionado;
+    }
 }

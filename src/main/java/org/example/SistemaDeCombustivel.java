@@ -44,8 +44,8 @@ public class SistemaDeCombustivel {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public boolean ligar(boolean estado) {
+        return this.nivelDeCombustivel > 0.5;
     }
 
     public void abastecer(double quantidade){

@@ -1,11 +1,14 @@
 package org.example;
 
+import java.util.Objects;
+
 public class Carro {
     private String modelo;
     private String cor;
     private String placa;
     private int ano;
     private double quilometragem;
+    private boolean ligado;
 
     public String getModelo() {
         return modelo;
@@ -47,12 +50,16 @@ public class Carro {
         this.quilometragem = quilometragem;
     }
 
-    public boolean ligar() {
-        return true;
+    public boolean isLigado() {
+        return ligado;
+    }
+
+    public boolean ligar(boolean sistemaEletrico, int sistemaDeTransmissao, String portas, boolean motor, boolean freio, boolean carro) {
+        return this.ligado = sistemaEletrico && sistemaDeTransmissao == 0 && Objects.equals(portas, "Fechada") && motor && freio && !carro;
     }
 
     public boolean desligar() {
-        return false;
+        return this.ligado = false;
     }
 
     public void atualizarQuilometragem(double km) {
