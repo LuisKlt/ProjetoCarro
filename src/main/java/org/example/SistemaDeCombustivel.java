@@ -44,8 +44,12 @@ public class SistemaDeCombustivel {
         return estado;
     }
 
-    public boolean ligar(boolean estado) {
+    public boolean ligar() {
         return this.nivelDeCombustivel > 0.5;
+    }
+
+    public boolean desligar() {
+        return false;
     }
 
     public void abastecer(double quantidade){

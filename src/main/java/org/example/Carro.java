@@ -8,7 +8,7 @@ public class Carro {
     private String placa;
     private int ano;
     private double quilometragem;
-    private boolean ligado;
+    private boolean ligado = false;
 
     public String getModelo() {
         return modelo;

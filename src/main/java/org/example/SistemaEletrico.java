@@ -45,7 +45,7 @@ public class SistemaEletrico {
     }
 
     public boolean ligar() {
-        return this.verificarBateria() && this.getCapacidade() != 0;
+        return this.testarSistema() && this.getCapacidade() != 0;
     }
 
     public void desligar() {
@@ -59,7 +59,7 @@ public class SistemaEletrico {
     }
 
     public boolean testarSistema(){
-        return this.voltagem >= 13.8 && this.voltagem < 14.4 && this.capacidade != 0;
+        return this.voltagem >= 13.8 && this.getVoltagem() < 14.4 && this.getCapacidade() > 0;
     }
 
 }

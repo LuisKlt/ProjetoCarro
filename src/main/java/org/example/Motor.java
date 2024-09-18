@@ -44,8 +44,8 @@ public class Motor {
         return ligado;
     }
 
-    public boolean ligar(boolean sistemaDeCombustivel) {
-        return this.ligado = sistemaDeCombustivel;
+    public boolean ligar(boolean sistemaDeCombustivel, boolean sistemaEletrico) {
+        return this.ligado = sistemaDeCombustivel && sistemaEletrico;
     }
 
     public void desligar() {
