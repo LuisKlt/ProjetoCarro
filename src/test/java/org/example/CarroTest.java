@@ -50,4 +50,16 @@ public class CarroTest {
         assertTrue(Carro, "O carro deve estar ligado.");
     }
 
+    @Test
+    public void integracaoBancoSistemaEletrico(){
+        System.out.println("Integração banco e sitemaEletrico");
+
+    }
+
+    @Test
+    public void integracaoLuzesPainelSistemaEletrico(){
+        System.out.println("Integração luzes, painel e sitemaEletrico");
+
+    }
+
 }
