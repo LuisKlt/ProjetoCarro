@@ -6,7 +6,7 @@ public class Pneus {
     private String tipo;
     private String marca;
     private String estado;
-    private double pressao ;
+    private double pressao;
 
     public String getTamanho() {
         return tamanho;
