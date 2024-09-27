@@ -44,7 +44,7 @@ public class Pneus {
         return pressao;
     }
 
-    public void AjustarPressao(double novaPressao) {
+    public void ajustarPressao(double novaPressao) {
         this.pressao = novaPressao;
     }
 

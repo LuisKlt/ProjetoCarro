@@ -70,8 +70,7 @@ public class Bancos {
         return posicao;
     }
 
-    public double ajustarAltura(double novaAltura){
-        return novaAltura;
+    public void ajustarAltura(double novaAltura){
     }
 
 }

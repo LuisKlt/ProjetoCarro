@@ -20,8 +20,12 @@ public class Painel {
         return display;
     }
 
-    public void atualizaInfo(String display) {
-        this.display = display;
+    public String atualizaInfo(double banco, int luzes, double pneus, double sistemaDirecao, double suspencao) {
+        return this.display = "Altura do banco: "+banco+
+                "\nIntensidade das luzes: "+luzes+
+                "\nPressão dos pneus: "+pneus+
+                "\nÂngulo da Direção: "+sistemaDirecao+
+                "\nAltura da suspenção: "+suspencao;
     }
 
     public String getMarca() {
@@ -44,8 +48,8 @@ public class Painel {
         return estado;
     }
 
-    public void ligarDisplay() {
-        this.estado = true;
+    public boolean ligarDisplay(boolean carro) {
+        return this.estado = carro;
     }
 
     public void desligarDisplay() {

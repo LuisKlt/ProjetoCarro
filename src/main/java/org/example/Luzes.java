@@ -47,8 +47,8 @@ public class Luzes {
         this.modelo = modelo;
     }
 
-    public void ligar(){
-        this.setEstado(true);
+    public boolean ligar(boolean sistemaEletrico){
+        return this.estado = sistemaEletrico;
     }
 
     public void desligar(){

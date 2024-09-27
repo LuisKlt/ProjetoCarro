@@ -14,10 +14,6 @@ public class SistemaDeDirecao {
         return angulo;
     }
 
-    public void setAngulo(double angulo) {
-        this.angulo = angulo;
-    }
-
     public String verificarEstado() {
         return estado;
     }
@@ -67,7 +63,7 @@ public class SistemaDeDirecao {
     }
 
     public void ajustarDirecao(double angulo){
-        this.setAngulo(angulo);
+        this.angulo = angulo;
     }
 
     public void substituirComponente(String componente){
