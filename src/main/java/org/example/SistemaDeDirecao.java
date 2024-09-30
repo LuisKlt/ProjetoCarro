@@ -10,6 +10,16 @@ public class SistemaDeDirecao {
     private double angulo;
     private String estado;
 
+    public SistemaDeDirecao(String tipo, String material, String marca, boolean assistido, double relacao, double angulo, String estado) {
+        this.tipo = tipo;
+        this.material = material;
+        this.marca = marca;
+        this.assistido = assistido;
+        this.relacao = relacao;
+        this.angulo = angulo;
+        this.estado = estado;
+    }
+
     public double getAngulo() {
         return angulo;
     }
@@ -61,6 +71,7 @@ public class SistemaDeDirecao {
     public void setRelacao(double relacao) {
         this.relacao = relacao;
     }
+
 
     public void ajustarDirecao(double angulo){
         this.angulo = angulo;

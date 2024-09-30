@@ -7,6 +7,14 @@ public class Suspencao {
     private double altura;
     private int regidez;
 
+    public Suspencao(String tipo, String material, String marca, double altura, int regidez) {
+        this.tipo = tipo;
+        this.material = material;
+        this.marca = marca;
+        this.altura = altura;
+        this.regidez = regidez;
+    }
+
     public String getTipo() {
         return tipo;
     }
@@ -47,10 +55,7 @@ public class Suspencao {
         this.regidez = regidez;
     }
 
-    public void ajustarAltura(double novaAltura) {
-        this.setAltura(novaAltura);
-    }
-
+    //métodos com integração
     public int verificarEstado(){
         return this.getRegidez();
     }

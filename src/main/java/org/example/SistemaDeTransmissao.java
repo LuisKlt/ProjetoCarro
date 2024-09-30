@@ -9,6 +9,15 @@ public class SistemaDeTransmissao {
     private boolean estado;
     private int marcha;
 
+    public SistemaDeTransmissao(String tipo, String material, String marca, int numeroDeMarchas, boolean estado, int marcha) {
+        this.tipo = tipo;
+        this.material = material;
+        this.marca = marca;
+        this.numeroDeMarchas = numeroDeMarchas;
+        this.estado = estado;
+        this.marcha = marcha;
+    }
+
     public String getTipo() {
         return tipo;
     }
@@ -49,8 +58,6 @@ public class SistemaDeTransmissao {
         this.estado = estado;
     }
 
-
-
     public int getMarcha() {
         return marcha;
     }
@@ -59,6 +66,7 @@ public class SistemaDeTransmissao {
         this.marcha = marcha;
     }
 
+    //métodos com integração
     public void trocarMarcha(int marcha){
         this.setMarcha(marcha);
     }

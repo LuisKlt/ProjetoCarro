@@ -40,6 +40,7 @@ public class Pneus {
         this.estado = estado;
     }
 
+    //métodos com integração
     public double verificarPressao() {
         return pressao;
     }
@@ -47,6 +48,7 @@ public class Pneus {
     public void ajustarPressao(double novaPressao) {
         this.pressao = novaPressao;
     }
+
 
     public void substituir(){
         System.out.println("Pneu substituído!");

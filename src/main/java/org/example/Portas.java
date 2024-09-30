@@ -8,6 +8,14 @@ public class Portas {
     private String tipo;
     private String estado;
 
+    public Portas(int quantidade, String material, String cor, String tipo, String estado) {
+        this.quantidade = quantidade;
+        this.material = material;
+        this.cor = cor;
+        this.tipo = tipo;
+        this.estado = estado;
+    }
+
     public int getQuantidade() {
         return quantidade;
     }
@@ -40,19 +48,22 @@ public class Portas {
         this.tipo = tipo;
     }
 
-    public String verificarEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public void abrir(){
-        this.estado = "Aberta";
+    //métodos com integração
+    public void abrir(boolean sistemaEletrico){
+        if (sistemaEletrico){
+            this.estado = "Aberta";
+        }
+        else{
+            System.out.println("");
+        }
     }
 
     public void fechar(){
         this.estado = "Fechada";
+
     }
 }

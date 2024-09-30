@@ -7,6 +7,14 @@ public class Luzes {
     private boolean estado;
     private String modelo;
 
+    public Luzes(String tipo, int intensidade, String cor, boolean estado, String modelo) {
+        this.tipo = tipo;
+        this.intensidade = intensidade;
+        this.cor = cor;
+        this.estado = estado;
+        this.modelo = modelo;
+    }
+
     public String getTipo() {
         return tipo;
     }
@@ -19,7 +27,7 @@ public class Luzes {
         return intensidade;
     }
 
-    public void ajustarIntensidade(int intensidade) {
+    public void setIntensidade(int intensidade) {
         this.intensidade = intensidade;
     }
 
@@ -47,6 +55,7 @@ public class Luzes {
         this.modelo = modelo;
     }
 
+    //métodos com integração
     public boolean ligar(boolean sistemaEletrico){
         return this.estado = sistemaEletrico;
     }

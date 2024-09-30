@@ -8,6 +8,14 @@ public class SistemaEletrico {
     private String marca;
     private boolean estado;
 
+    public SistemaEletrico(double voltagem, double capacidade, String tipoDeBateria, String marca, boolean estado) {
+        this.voltagem = voltagem;
+        this.capacidade = capacidade;
+        this.tipoDeBateria = tipoDeBateria;
+        this.marca = marca;
+        this.estado = estado;
+    }
+
     public double getVoltagem() {
         return voltagem;
     }
@@ -44,22 +52,37 @@ public class SistemaEletrico {
         return estado;
     }
 
+    //métodos com integração
+
     public boolean ligar() {
-        return this.testarSistema() && this.getCapacidade() != 0;
+        return this.testarSistema();
     }
 
     public void desligar() {
         this.estado = false;
     }
 
-    public void substituirBateria(){
-        this.setCapacidade(100);
-        this.setVoltagem(14.0);
-        System.out.println("Bateria substituída!");
+    public void substituirBateria(boolean carro){
+        if (!carro) {
+            this.setCapacidade(100);
+            this.setVoltagem(14.0);
+            System.out.println("Bateria substituída");
+        }
+        else {
+            System.out.println("O carro precisa estar desligado");
+        }
     }
 
     public boolean testarSistema(){
-        return this.voltagem >= 13.8 && this.getVoltagem() < 14.4 && this.getCapacidade() > 0;
+        if (this.getVoltagem() >= 13.8 && this.getVoltagem() < 14.4 && this.getCapacidade() > 0){
+            System.out.println("Sistema Elétrico OK");
+            return true;
+        }
+        else{
+            System.out.println("Sistema Elétrico com defeito");
+            return false;
+        }
+
     }
 
 }

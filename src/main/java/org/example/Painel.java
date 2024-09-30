@@ -20,14 +20,6 @@ public class Painel {
         return display;
     }
 
-    public String atualizaInfo(double banco, int luzes, double pneus, double sistemaDirecao, double suspencao) {
-        return this.display = "Altura do banco: "+banco+
-                "\nIntensidade das luzes: "+luzes+
-                "\nPressão dos pneus: "+pneus+
-                "\nÂngulo da Direção: "+sistemaDirecao+
-                "\nAltura da suspenção: "+suspencao;
-    }
-
     public String getMarca() {
         return marca;
     }
@@ -48,8 +40,17 @@ public class Painel {
         return estado;
     }
 
-    public boolean ligarDisplay(boolean carro) {
-        return this.estado = carro;
+    //métodos com integração
+    public String atualizaInfo(double banco, int luzes, double pneus, double sistemaDirecao, double suspencao) {
+        return this.display = "Altura do banco: "+banco+
+                "\nIntensidade das luzes: "+luzes+
+                "\nPressão dos pneus: "+pneus+
+                "\nÂngulo da Direção: "+sistemaDirecao+
+                "\nAltura da suspenção: "+suspencao;
+    }
+
+    public boolean ligarDisplay(boolean sistemaEletrico) {
+        return this.estado = sistemaEletrico;
     }
 
     public void desligarDisplay() {

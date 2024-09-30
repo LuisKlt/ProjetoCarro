@@ -8,6 +8,14 @@ public class SistemaDeCombustivel {
     private double nivelDeCombustivel;
     private boolean estado;
 
+    public SistemaDeCombustivel(String tipoCombustivel, String marca, double capacidade, double nivelDeCombustivel, boolean estado) {
+        this.tipoCombustivel = tipoCombustivel;
+        this.marca = marca;
+        this.capacidade = capacidade;
+        this.nivelDeCombustivel = nivelDeCombustivel;
+        this.estado = estado;
+    }
+
     public String getTipoCombustivel() {
         return tipoCombustivel;
     }
@@ -44,6 +52,7 @@ public class SistemaDeCombustivel {
         return estado;
     }
 
+    //métodos com integração
     public boolean ligar() {
         return this.nivelDeCombustivel > 0.5;
     }
