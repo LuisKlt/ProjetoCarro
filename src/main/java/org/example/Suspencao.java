@@ -60,8 +60,15 @@ public class Suspencao {
         return this.getRegidez();
     }
 
-    public void substituir(){
-        System.out.println("Suspenção substituída!");
+    public boolean substituirSuspencao(boolean carroMovimento){
+        if (carroMovimento){
+            System.out.println("Pare o carro para substituir a suspenção");
+            return false;
+        }
+        else{
+            System.out.println("Suspenção substituída!");
+            return true;
+        }
     }
 
 }

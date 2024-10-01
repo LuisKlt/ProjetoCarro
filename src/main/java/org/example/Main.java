@@ -4,17 +4,17 @@ public class Main {
 
     /*
     Bancos I
-    Carro II
+    Carro IIII
     Freios I
-    Luzes
+    Luzes I
     Motor II
     Painel
-    Pneus
-    Portas
+    Pneus I
+    Portas I
     SistemaDeCombustivel I
     SistemaDeTransmissao I
-    SistemaEletrico III
-    Suspencao
+    SistemaEletrico IIII
+    Suspencao I
     */
 
     public static void main(String[] args) {
@@ -27,18 +27,31 @@ public class Main {
         Painel painel = new Painel("Digital", "", "BMW", false, false);
         Pneus pneus = new Pneus("255/35R19", "Radial", "Toyo", "Novo", 22.9);
         Portas portas = new Portas(2, "Alumínio", "Azul", "Normal", false);
-        SistemaDeCombustivel sistemaDeCombustivel = new SistemaDeCombustivel("Gasolina", "Bosch", 45, 22.5, true);
+        SistemaDeCombustivel sistemaDeCombustivel = new SistemaDeCombustivel("Gasolina", "Bosch", 59, 22.5, true);
         SistemaDeDirecao sistemaDeDirecao = new SistemaDeDirecao("Elétrica", "Carbono", "BMW", false, 900, 0, "Novo");
         SistemaDeTransmissao sistemaDeTransmissao = new SistemaDeTransmissao("Automático", "Magnésio", "BMW", 6, false, 0);
         SistemaEletrico sistemaEletrico = new SistemaEletrico(13.8, 80, "12V", "Pioneiro", true, false);
+        Suspencao suspencao = new Suspencao("Coilovers","Aço", "Bilstein", 120, 5);
 
         bancos.ajustarAltura(sistemaEletrico.verificarBateria(), 3);
 
         motor.ligar(sistemaDeCombustivel.isEstado(), sistemaEletrico.verificarBateria());
 
+        motor.desligar(carro.isMovimento());
+
         sistemaEletrico.substituirBateria(carro.isLigado());
 
         carro.ligar(sistemaEletrico.verificarBateria(),sistemaDeTransmissao.getMarcha(), motor.verificarEstado(), freios.isAcionado(), carro.isLigado());
+
+        portas.abrir(sistemaEletrico.isTrava());
+
+        luzes.ligar(sistemaEletrico.verificarBateria());
+
+        pneus.substituirPneus(carro.isMovimento(), freios.isAcionado());
+
+        suspencao.substituirSuspencao(carro.isMovimento());
+
+        painel.ligarDisplay(sistemaEletrico.verificarBateria());
 
 
     }

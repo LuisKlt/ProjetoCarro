@@ -6,17 +6,17 @@ import org.junit.jupiter.api.Test;
 public class CarroTest {
 
     private Carro carro = new Carro("BMW M3", "Azul", "AAA-111", 2022, 15050, false, false);;
-    private SistemaEletrico sistemaEletrico = new SistemaEletrico(13.8, 80, "12V", "Pioneiro", true);
+    private SistemaEletrico sistemaEletrico = new SistemaEletrico(13.8, 80, "12V", "Pioneiro", true, true);
     private SistemaDeTransmissao sistemaDeTransmissao = new SistemaDeTransmissao("Automático", "Magnésio", "BMW", 6, false, 0);
-    private Portas portas;
+    private Portas portas = new Portas(2, "Alumínio", "Azul", "Normal", false);
     private Motor motor = new Motor("Inline 6", 510, 3000, "BMW", false);
     private Freios freios = new Freios("Disco", "Cerâmica", "Brembo", 370, 5, true);
     private SistemaDeCombustivel sistemaDeCombustivel = new SistemaDeCombustivel("Gasolina", "Bosch", 45, 22.5, false);
-    private Painel painel;
+    private Painel painel = new Painel("Digital", "", "BMW", false, false);
     private Bancos bancos = new Bancos(2, "Couro", "Preto", "Padrão", "Novo", "Levantado", 2.5);
-    private Luzes luzes;
-    private Pneus pneus;
-    private SistemaDeDirecao sistemaDeDirecao;
+    private Luzes luzes = new Luzes("Luz de freio", 6, "Vermelho", false, "Led");
+    private Pneus pneus = new Pneus("255/35R19", "Radial", "Toyo", "Novo", 22.9);
+    private SistemaDeDirecao sistemaDeDirecao = new SistemaDeDirecao("Elétrica", "Carbono", "BMW", false, 900, 0, "Novo");
     private Suspencao suspencao;
 
     @Test
@@ -28,6 +28,12 @@ public class CarroTest {
     public void ligarCarroTest(){
         boolean Carro = carro.ligar(sistemaEletrico.verificarBateria(),sistemaDeTransmissao.getMarcha(), motor.verificarEstado(), freios.isAcionado(), carro.isLigado());
         Assertions.assertFalse(Carro, "O carro não deve ligar");
+    }
+
+    @Test
+    public void desligarMotorTest(){
+        boolean Motor = motor.desligar(carro.isMovimento());
+        Assertions.assertFalse(Motor, "O motor deve estar desligado");
     }
 
     @Test
@@ -45,7 +51,29 @@ public class CarroTest {
     }
 
     @Test
-    public void
+    public void abrirPortaTest(){
+        portas.abrir(sistemaEletrico.isTrava());
+        boolean Portas = portas.getEstado();
+        Assertions.assertTrue(Portas);
+    }
 
+    @Test
+    public void ligarLuzesTest(){
+        luzes.ligar(sistemaEletrico.verificarBateria());
+        boolean Luzes = luzes.isEstado();
+        Assertions.assertTrue(Luzes);
+    }
+
+    @Test
+    public void substituirPneusTest(){
+        boolean Pneus = pneus.substituirPneus(carro.isMovimento(), freios.isAcionado());
+        Assertions.assertTrue(Pneus);
+    }
+
+    @Test
+    public void substituirSuspencaoTest(){
+        boolean Suspencao = suspencao.substituirSuspencao(carro.isMovimento());
+        Assertions.assertTrue(Suspencao);
+    }
 
 }

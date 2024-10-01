@@ -51,6 +51,8 @@ public class Freios {
         return acionado;
     }
 
+
+
     //métodos com integração
     public void acionaFreio() {
         this.acionado = true;

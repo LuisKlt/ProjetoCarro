@@ -59,6 +59,19 @@ public class Carro {
         return this.ligado;
     }
 
+    public void showInfo(){
+        System.out.println(
+                "Carro"+
+                "Modelo: "+this.getModelo()+
+                "Cor: "+this.getCor()+
+                "Placa: "+this.getPlaca()+
+                "Ano: "+this.getAno()+
+                "Quilometragem: "+this.getQuilometragem()+
+                "Ligado: "+this.isLigado()+
+                "Movimento: "+this.isMovimento()
+        );
+    }
+
     //métodos com integração
     public boolean ligar(boolean sistemaEletrico, int sistemaDeTransmissao, boolean motor, boolean freio, boolean carro) {
         if(sistemaEletrico && sistemaDeTransmissao == 0 && motor && freio && !carro) {
@@ -70,7 +83,7 @@ public class Carro {
             return this.ligado = false;
         }
         else if(sistemaDeTransmissao != 0){
-            System.out.println("Verifique o sistema de transmissão");
+            System.out.println("Sistema de transmissão precisa estar em neutro (marcha = 0)");
             return this.ligado = false;
         }
         else if(!motor){

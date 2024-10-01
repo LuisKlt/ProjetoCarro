@@ -48,7 +48,6 @@ public class Pneus {
         this.estado = estado;
     }
 
-    //métodos com integração
     public double verificarPressao() {
         return pressao;
     }
@@ -57,9 +56,21 @@ public class Pneus {
         this.pressao = novaPressao;
     }
 
+    //métodos com integração
 
-    public void substituir(){
-        System.out.println("Pneu substituído!");
+    public boolean substituirPneus(boolean carroMovimento, boolean freio){
+        if(carroMovimento){
+            System.out.println("Pare o carro para substituir os pneus");
+            return false;
+        }
+        else if(!freio){
+            System.out.println("Acione o freio para substituir os pneus");
+            return false;
+        }
+        else{
+            System.out.println("Pneu substituído!");
+            return true;
+        }
     }
 
 }

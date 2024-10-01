@@ -49,7 +49,8 @@ public class Painel {
 
     //métodos com integração
     public String atualizaInfo(double banco, int luzes, double pneus, double sistemaDirecao, double suspencao) {
-        return this.display = "Altura do banco: "+banco+
+        return this.display =
+                "\nAltura do banco: "+banco+
                 "\nIntensidade das luzes: "+luzes+
                 "\nPressão dos pneus: "+pneus+
                 "\nÂngulo da Direção: "+sistemaDirecao+
@@ -57,7 +58,14 @@ public class Painel {
     }
 
     public boolean ligarDisplay(boolean sistemaEletrico) {
-        return this.estado = sistemaEletrico;
+        if (sistemaEletrico){
+            System.out.println("Display ligado");
+            return this.estado = true;
+        }
+        else{
+            System.out.println("");
+            return this.estado = false;
+        }
     }
 
     public void desligarDisplay() {

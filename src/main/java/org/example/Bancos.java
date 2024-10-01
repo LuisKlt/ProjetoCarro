@@ -63,6 +63,19 @@ public class Bancos {
         this.estado = estado;
     }
 
+    public void showInfo(){
+        System.out.println(
+                "\nBancos"+
+                "\nQuantidade: "+this.getQuantidade()+
+                "\nMaterial: "+this.getMaterial()+
+                "\nCor: "+this.getCor()+
+                "\nTipo: "+this.getTipo()+
+                "\nEstado: "+this.getEstado()+
+                "\nPosição: "+this.getPosicao()+
+                "\nAltura: "+this.getAltura()
+        );
+    }
+
     //métodos com integração
     public String ajustarEncosto(String posicao){
         return posicao;

@@ -57,7 +57,14 @@ public class Luzes {
 
     //métodos com integração
     public boolean ligar(boolean sistemaEletrico){
-        return this.estado = sistemaEletrico;
+        if(sistemaEletrico){
+            System.out.println("Luzes ligadas");
+            return this.estado = true;
+        }
+        else{
+            System.out.println("Não é possível ligar as luzes, verifique o sistema elétrico");
+            return this.estado = false;
+        }
     }
 
     public void desligar(){
