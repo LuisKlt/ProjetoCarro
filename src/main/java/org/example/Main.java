@@ -3,18 +3,18 @@ package org.example;
 public class Main {
 
     /*
-    Bancos I
+    Bancos II
     Carro IIII
-    Freios I
-    Luzes I
+    Freios II
+    Luzes II
     Motor II
-    Painel
-    Pneus I
-    Portas I
-    SistemaDeCombustivel I
-    SistemaDeTransmissao I
+    Painel IIII
+    Pneus II
+    Portas II
+    SistemaDeCombustivel II
+    SistemaDeTransmissao II
     SistemaEletrico IIII
-    Suspencao I
+    Suspencao II
     */
 
     public static void main(String[] args) {
@@ -55,7 +55,6 @@ public class Main {
 
         painel.atualizaInfo(carro.getModelo(), bancos.getAltura(), luzes.getIntensidade(), pneus.verificarPressao(), sistemaDeDirecao.getAngulo(), suspencao.getAltura(),
                 freios.isAcionado(), motor.getPotencia(), sistemaDeCombustivel.verificarNivel(), sistemaDeTransmissao.getMarcha(), portas.getEstado());
-        System.out.println(painel.getDisplay());
 
     }
 

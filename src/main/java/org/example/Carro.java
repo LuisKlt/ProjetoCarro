@@ -59,19 +59,6 @@ public class Carro {
         return this.ligado;
     }
 
-    public void showInfo(){
-        System.out.println(
-                "Carro"+
-                "Modelo: "+this.getModelo()+
-                "Cor: "+this.getCor()+
-                "Placa: "+this.getPlaca()+
-                "Ano: "+this.getAno()+
-                "Quilometragem: "+this.getQuilometragem()+
-                "Ligado: "+this.isLigado()+
-                "Movimento: "+this.isMovimento()
-        );
-    }
-
     //métodos com integração
     public boolean ligar(boolean sistemaEletrico, int sistemaDeTransmissao, boolean motor, boolean freio, boolean carro) {
         if(sistemaEletrico && sistemaDeTransmissao == 0 && motor && freio && !carro) {

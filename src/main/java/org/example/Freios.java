@@ -51,10 +51,9 @@ public class Freios {
         return acionado;
     }
 
-
-
-    //métodos com integração
     public void acionaFreio() {
+        System.out.println("Freio acionado, desgaste aumentou");
+        this.setNivelDeDesgaste(this.verificarDesgaste() - 1);
         this.acionado = true;
     }
 
