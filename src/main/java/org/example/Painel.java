@@ -48,13 +48,24 @@ public class Painel {
     }
 
     //métodos com integração
-    public String atualizaInfo(double banco, int luzes, double pneus, double sistemaDirecao, double suspencao) {
+    public String atualizaInfo(String carroModelo, double bancoAltura, int luzesIntensidade, double pneusPressao, double sistemaDirecao,
+                               double suspencao, boolean freio, int motorPotencia, double combusitivel, int transmissao, boolean porta) {
         return this.display =
-                "\nAltura do banco: "+banco+
-                "\nIntensidade das luzes: "+luzes+
-                "\nPressão dos pneus: "+pneus+
-                "\nÂngulo da Direção: "+sistemaDirecao+
-                "\nAltura da suspenção: "+suspencao;
+                        "\n----------------------------"+
+                        "\nDisplay "+carroModelo+
+                        "\n----------------------------"+
+                        "\nAltura do banco: "+bancoAltura+"Cm"+
+                        "\nIntensidade das luzes: "+luzesIntensidade+
+                        "\nPressão dos pneus: "+pneusPressao+"Psi"+
+                        "\nÂngulo da Direção: "+sistemaDirecao+"º"+
+                        "\nAltura da suspenção: "+suspencao+"Cm"+
+                        "\nLuz de freio: "+freio+
+                        "\nPotência do motor: "+motorPotencia+"HP"+
+                        "\nCombustivel: "+combusitivel+" Litros"+
+                        "\nMarcha atual: "+transmissao+
+                        "\nPorta aberta: "+porta+
+                        "\n----------------------------";
+
     }
 
     public boolean ligarDisplay(boolean sistemaEletrico) {

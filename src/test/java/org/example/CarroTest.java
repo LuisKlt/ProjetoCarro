@@ -17,7 +17,7 @@ public class CarroTest {
     private Luzes luzes = new Luzes("Luz de freio", 6, "Vermelho", false, "Led");
     private Pneus pneus = new Pneus("255/35R19", "Radial", "Toyo", "Novo", 22.9);
     private SistemaDeDirecao sistemaDeDirecao = new SistemaDeDirecao("Elétrica", "Carbono", "BMW", false, 900, 0, "Novo");
-    private Suspencao suspencao;
+    private Suspencao suspencao = new Suspencao("Coilovers","Aço", "Bilstein", 120, 5);
 
     @Test
     public void ligarMotorTest(){
@@ -74,6 +74,14 @@ public class CarroTest {
     public void substituirSuspencaoTest(){
         boolean Suspencao = suspencao.substituirSuspencao(carro.isMovimento());
         Assertions.assertTrue(Suspencao);
+    }
+
+    @Test
+    public void atualizaInfoTest(){
+        String Exp = "";
+        String Display = painel.atualizaInfo(carro.getModelo(), bancos.getAltura(), luzes.getIntensidade(), pneus.verificarPressao(), sistemaDeDirecao.getAngulo(), suspencao.getAltura(),
+                freios.isAcionado(), motor.getPotencia(), sistemaDeCombustivel.verificarNivel(), sistemaDeTransmissao.getMarcha(), portas.getEstado());
+        Assertions.assertNotSame(Exp, Display, "O display não pode estar vazio");
     }
 
 }

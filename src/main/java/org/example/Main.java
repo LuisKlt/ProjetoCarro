@@ -22,7 +22,7 @@ public class Main {
         Bancos bancos = new Bancos(2, "Couro", "Preto", "Padrão", "Novo", "Levantado", 2.5);
         Carro carro = new Carro("BMW M3", "Azul", "AAA-111", 2022, 15050, false, false);
         Freios freios = new Freios("Disco", "Cerâmica", "Brembo", 370, 5, true);
-        Luzes luzes = new Luzes("Luz de freio", 6, "Vermelho", false, "Led");
+        Luzes luzes = new Luzes("Luzes dianteiras", 6, "Vermelho", false, "Led");
         Motor motor = new Motor("Inline 6", 510, 3000, "BMW", false);
         Painel painel = new Painel("Digital", "", "BMW", false, false);
         Pneus pneus = new Pneus("255/35R19", "Radial", "Toyo", "Novo", 22.9);
@@ -53,6 +53,9 @@ public class Main {
 
         painel.ligarDisplay(sistemaEletrico.verificarBateria());
 
+        painel.atualizaInfo(carro.getModelo(), bancos.getAltura(), luzes.getIntensidade(), pneus.verificarPressao(), sistemaDeDirecao.getAngulo(), suspencao.getAltura(),
+                freios.isAcionado(), motor.getPotencia(), sistemaDeCombustivel.verificarNivel(), sistemaDeTransmissao.getMarcha(), portas.getEstado());
+        System.out.println(painel.getDisplay());
 
     }
 
