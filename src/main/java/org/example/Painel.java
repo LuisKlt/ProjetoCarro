@@ -63,7 +63,7 @@ public class Painel {
             return this.estado = true;
         }
         else{
-            System.out.println("");
+            System.out.println("Verifique o sistema elétrico, Display desligado");
             return this.estado = false;
         }
     }
