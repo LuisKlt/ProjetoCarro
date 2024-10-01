@@ -66,7 +66,7 @@ public class Suspencao {
             return false;
         }
         else{
-            System.out.println("Suspenção substituída!");
+            System.out.println("Suspenção substituída");
             return true;
         }
     }

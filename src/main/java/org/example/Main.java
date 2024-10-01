@@ -2,21 +2,6 @@ package org.example;
 
 public class Main {
 
-    /*
-    Bancos II
-    Carro IIII
-    Freios II
-    Luzes II
-    Motor II
-    Painel IIII
-    Pneus II
-    Portas II
-    SistemaDeCombustivel II
-    SistemaDeTransmissao II
-    SistemaEletrico IIII
-    Suspencao II
-    */
-
     public static void main(String[] args) {
 
         Bancos bancos = new Bancos(2, "Couro", "Preto", "Padrão", "Novo", "Levantado", 2.5);
@@ -33,8 +18,6 @@ public class Main {
         SistemaEletrico sistemaEletrico = new SistemaEletrico(13.8, 80, "12V", "Pioneiro", true, false);
         Suspencao suspencao = new Suspencao("Coilovers","Aço", "Bilstein", 120, 5);
 
-        bancos.ajustarAltura(sistemaEletrico.verificarBateria(), 3);
-
         motor.ligar(sistemaDeCombustivel.isEstado(), sistemaEletrico.verificarBateria());
 
         motor.desligar(carro.isMovimento());
@@ -42,6 +25,8 @@ public class Main {
         sistemaEletrico.substituirBateria(carro.isLigado());
 
         carro.ligar(sistemaEletrico.verificarBateria(),sistemaDeTransmissao.getMarcha(), motor.verificarEstado(), freios.isAcionado(), carro.isLigado());
+
+        bancos.ajustarAltura(sistemaEletrico.verificarBateria(), 3);
 
         portas.abrir(sistemaEletrico.isTrava());
 
@@ -56,6 +41,7 @@ public class Main {
         painel.atualizaInfo(carro.getModelo(), bancos.getAltura(), luzes.getIntensidade(), pneus.verificarPressao(), sistemaDeDirecao.getAngulo(), suspencao.getAltura(),
                 freios.isAcionado(), motor.getPotencia(), sistemaDeCombustivel.verificarNivel(), sistemaDeTransmissao.getMarcha(), portas.getEstado());
 
+        freios.acionaFreio();
     }
 
 }

@@ -68,7 +68,7 @@ public class Pneus {
             return false;
         }
         else{
-            System.out.println("Pneu substituído!");
+            System.out.println("Pneu substituído");
             return true;
         }
     }

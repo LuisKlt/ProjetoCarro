@@ -24,7 +24,7 @@ public class Painel {
     }
 
     public String getDisplay() {
-        return display;
+        return this.display;
     }
 
     public String getMarca() {
@@ -50,21 +50,28 @@ public class Painel {
     //métodos com integração
     public String atualizaInfo(String carroModelo, double bancoAltura, int luzesIntensidade, double pneusPressao, double sistemaDirecao,
                                double suspencao, boolean freio, int motorPotencia, double combusitivel, int transmissao, boolean porta) {
-        return this.display =
-                        "\n----------------------------"+
-                        "\nDisplay "+carroModelo+
-                        "\n----------------------------"+
-                        "\nAltura do banco: "+bancoAltura+"Cm"+
-                        "\nIntensidade das luzes: "+luzesIntensidade+
-                        "\nPressão dos pneus: "+pneusPressao+"Psi"+
-                        "\nÂngulo da Direção: "+sistemaDirecao+"º"+
-                        "\nAltura da suspenção: "+suspencao+"Cm"+
-                        "\nLuz de freio: "+freio+
-                        "\nPotência do motor: "+motorPotencia+"HP"+
-                        "\nCombustivel: "+combusitivel+" Litros"+
-                        "\nMarcha atual: "+transmissao+
-                        "\nPorta aberta: "+porta+
-                        "\n----------------------------";
+        if(carroModelo != null){
+            System.out.println("Display atualizado");
+            return this.display =
+                    "\n----------------------------"+
+                            "\nDisplay "+carroModelo+
+                            "\n----------------------------"+
+                            "\nAltura do banco: "+bancoAltura+"Cm"+
+                            "\nIntensidade das luzes: "+luzesIntensidade+
+                            "\nPressão dos pneus: "+pneusPressao+"Psi"+
+                            "\nÂngulo da Direção: "+sistemaDirecao+"º"+
+                            "\nAltura da suspenção: "+suspencao+"Cm"+
+                            "\nLuz de freio: "+freio+
+                            "\nPotência do motor: "+motorPotencia+"HP"+
+                            "\nCombustivel: "+combusitivel+" Litros"+
+                            "\nMarcha atual: "+transmissao+
+                            "\nPorta aberta: "+porta+
+                            "\n----------------------------";
+        }
+        else{
+            System.out.println("Nome do carro não encontrado");
+            return null;
+        }
 
     }
 

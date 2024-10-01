@@ -54,7 +54,14 @@ public class SistemaDeCombustivel {
 
     //métodos com integração
     public boolean ligar() {
-        return this.nivelDeCombustivel > 0.5;
+        if(nivelDeCombustivel > 0){
+            System.out.println("Sistema de combustível ligado");
+            return this.estado = true;
+        }
+        else{
+            System.out.println("Sistema de combustível desligado");
+            return this.estado = false;
+        }
     }
 
     public boolean desligar() {
