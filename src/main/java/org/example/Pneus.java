@@ -8,6 +8,14 @@ public class Pneus {
     private String estado;
     private double pressao;
 
+    public Pneus(String tamanho, String tipo, String marca, String estado, double pressao) {
+        this.tamanho = tamanho;
+        this.tipo = tipo;
+        this.marca = marca;
+        this.estado = estado;
+        this.pressao = pressao;
+    }
+
     public String getTamanho() {
         return tamanho;
     }

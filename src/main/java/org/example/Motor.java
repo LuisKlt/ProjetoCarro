@@ -53,11 +53,29 @@ public class Motor {
 
     //métodos com integração
     public boolean ligar(boolean sistemaDeCombustivel, boolean sistemaEletrico) {
-        return this.ligado = sistemaDeCombustivel && sistemaEletrico;
+        if (sistemaDeCombustivel && sistemaEletrico){
+            System.out.println("Motor ligado");
+            return this.ligado = true;
+        }
+        else if(!sistemaDeCombustivel){
+            System.out.println("Motor não pode ser ligado, verifique o sistema de combustível");
+            return this.ligado = false;
+        }
+        else{
+            System.out.println("Motor não pode ser ligado, verifique o sistema elétrico");
+            return this.ligado = false;
+        }
     }
 
-    public void desligar() {
-        this.ligado = false;
+    public boolean desligar(boolean carroEmMovimento) {
+        if(carroEmMovimento){
+            System.out.println("Pare o carro antes de desligar");
+            return this.ligado = true;
+        }
+        else{
+            System.out.println("Motor desligado");
+            return this.ligado = false;
+        }
     }
 
 }

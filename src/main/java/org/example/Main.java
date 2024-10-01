@@ -4,10 +4,10 @@ public class Main {
 
     /*
     Bancos I
-    Carro I
+    Carro II
     Freios I
     Luzes
-    Motor I
+    Motor II
     Painel
     Pneus
     Portas
@@ -20,17 +20,17 @@ public class Main {
     public static void main(String[] args) {
 
         Bancos bancos = new Bancos(2, "Couro", "Preto", "Padrão", "Novo", "Levantado", 2.5);
-        Carro carro = new Carro("BMW M3", "Azul", "AAA-111", 2022, 15050, false);
+        Carro carro = new Carro("BMW M3", "Azul", "AAA-111", 2022, 15050, false, false);
         Freios freios = new Freios("Disco", "Cerâmica", "Brembo", 370, 5, true);
-
+        Luzes luzes = new Luzes("Luz de freio", 6, "Vermelho", false, "Led");
         Motor motor = new Motor("Inline 6", 510, 3000, "BMW", false);
-
-
-
+        Painel painel = new Painel("Digital", "", "BMW", false, false);
+        Pneus pneus = new Pneus("255/35R19", "Radial", "Toyo", "Novo", 22.9);
+        Portas portas = new Portas(2, "Alumínio", "Azul", "Normal", false);
         SistemaDeCombustivel sistemaDeCombustivel = new SistemaDeCombustivel("Gasolina", "Bosch", 45, 22.5, true);
+        SistemaDeDirecao sistemaDeDirecao = new SistemaDeDirecao("Elétrica", "Carbono", "BMW", false, 900, 0, "Novo");
         SistemaDeTransmissao sistemaDeTransmissao = new SistemaDeTransmissao("Automático", "Magnésio", "BMW", 6, false, 0);
-        SistemaEletrico sistemaEletrico = new SistemaEletrico(13.8, 80, "12V", "Pioneiro", true);
-
+        SistemaEletrico sistemaEletrico = new SistemaEletrico(13.8, 80, "12V", "Pioneiro", true, false);
 
         bancos.ajustarAltura(sistemaEletrico.verificarBateria(), 3);
 
@@ -39,6 +39,8 @@ public class Main {
         sistemaEletrico.substituirBateria(carro.isLigado());
 
         carro.ligar(sistemaEletrico.verificarBateria(),sistemaDeTransmissao.getMarcha(), motor.verificarEstado(), freios.isAcionado(), carro.isLigado());
+
+
     }
 
 }

@@ -6,9 +6,9 @@ public class Portas {
     private String material;
     private String cor;
     private String tipo;
-    private String estado;
+    private boolean estado;
 
-    public Portas(int quantidade, String material, String cor, String tipo, String estado) {
+    public Portas(int quantidade, String material, String cor, String tipo, boolean estado) {
         this.quantidade = quantidade;
         this.material = material;
         this.cor = cor;
@@ -48,22 +48,25 @@ public class Portas {
         this.tipo = tipo;
     }
 
-    public String getEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
     //métodos com integração
-    public void abrir(boolean sistemaEletrico){
-        if (sistemaEletrico){
-            this.estado = "Aberta";
+    public void abrir(boolean trava){
+        if (trava){
+            System.out.println("Trava ativa");
+            this.estado = false;
         }
         else{
-            System.out.println("");
+            System.out.println("Porta aberta");
+            this.estado = true;
         }
     }
 
     public void fechar(){
-        this.estado = "Fechada";
+        System.out.println("Porta fechada");
+        this.estado = false;
 
     }
 }

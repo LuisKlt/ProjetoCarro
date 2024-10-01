@@ -7,15 +7,23 @@ public class SistemaEletrico {
     private String tipoDeBateria;
     private String marca;
     private boolean estado;
+    private boolean trava;
 
-    public SistemaEletrico(double voltagem, double capacidade, String tipoDeBateria, String marca, boolean estado) {
+    public SistemaEletrico(double voltagem, double capacidade, String tipoDeBateria, String marca, boolean estado, boolean trava) {
         this.voltagem = voltagem;
         this.capacidade = capacidade;
         this.tipoDeBateria = tipoDeBateria;
         this.marca = marca;
         this.estado = estado;
+        this.trava = trava;
     }
 
+    public boolean isTrava() {
+        return trava;
+    }
+    public void setTrava(boolean trava) {
+        this.trava = trava;
+    }
     public double getVoltagem() {
         return voltagem;
     }
@@ -49,27 +57,28 @@ public class SistemaEletrico {
     }
 
     public boolean verificarBateria() {
-        return estado;
+        return this.estado;
     }
 
-    //métodos com integração
-
     public boolean ligar() {
-        return this.testarSistema();
+        return this.estado = this.testarSistema();
     }
 
     public void desligar() {
         this.estado = false;
     }
 
-    public void substituirBateria(boolean carro){
+    //métodos com integração
+    public String substituirBateria(boolean carro){
         if (!carro) {
             this.setCapacidade(100);
             this.setVoltagem(14.0);
             System.out.println("Bateria substituída");
+            return "Concluída";
         }
         else {
-            System.out.println("O carro precisa estar desligado");
+            System.out.println("Não é possível substituir a bateria com o carro ligado");
+            return "Falha";
         }
     }
 

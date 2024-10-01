@@ -7,16 +7,24 @@ public class Carro {
     private int ano;
     private double quilometragem;
     private boolean ligado;
+    private boolean movimento;
 
-    public Carro(String modelo, String cor, String placa, int ano, double quilometragem, boolean ligado) {
+    public Carro(String modelo, String cor, String placa, int ano, double quilometragem, boolean ligado, boolean movimento) {
         this.modelo = modelo;
         this.cor = cor;
         this.placa = placa;
         this.ano = ano;
         this.quilometragem = quilometragem;
         this.ligado = ligado;
+        this.movimento = movimento;
     }
 
+    public boolean isMovimento() {
+        return movimento;
+    }
+    public void setMovimento(boolean movimento) {
+        this.movimento = movimento;
+    }
     public String getModelo() {
         return modelo;
     }
@@ -48,16 +56,49 @@ public class Carro {
         this.quilometragem = quilometragem;
     }
     public boolean isLigado() {
-        return ligado;
+        return this.ligado;
     }
 
     //métodos com integração
     public boolean ligar(boolean sistemaEletrico, int sistemaDeTransmissao, boolean motor, boolean freio, boolean carro) {
-        return this.ligado = sistemaEletrico && sistemaDeTransmissao == 0 && motor && freio && !carro;
+        if(sistemaEletrico && sistemaDeTransmissao == 0 && motor && freio && !carro) {
+            System.out.println("Carro ligado");
+            return this.ligado = true;
+        }
+        else if(!sistemaEletrico){
+            System.out.println("Verifique o sistema elétrico");
+            return this.ligado = false;
+        }
+        else if(sistemaDeTransmissao != 0){
+            System.out.println("Verifique o sistema de transmissão");
+            return this.ligado = false;
+        }
+        else if(!motor){
+            System.out.println("Verifique o motor");
+            return this.ligado = false;
+        }
+        else if(!freio){
+            System.out.println("Verifique o freio");
+            return this.ligado = false;
+        }
+        else{
+            System.out.println("Carro já esta ligado");
+            return this.ligado = true;
+        }
     }
-    public boolean desligar(boolean freio) {
-        return this.ligado = !freio;
-
+    public boolean desligar(boolean freio, boolean carroMovimento) {
+        if(freio && !carroMovimento) {
+            System.out.println("Carro desligado");
+            return this.ligado = false;
+        }
+        else if(!freio){
+            System.out.println("Acione o freio para desligar");
+            return this.ligado = true;
+        }
+        else{
+            System.out.println("Pare o carro para desligar");
+            return this.ligado = true;
+        }
     }
 
 }

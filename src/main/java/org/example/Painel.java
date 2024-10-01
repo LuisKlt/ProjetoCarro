@@ -1,12 +1,19 @@
 package org.example;
 
 public class Painel {
-
     private String tipo;
     private String display;
     private String marca;
     private boolean controle;
     private boolean estado;
+
+    public Painel(String tipo, String display, String marca, boolean controle, boolean estado) {
+        this.tipo = tipo;
+        this.display = display;
+        this.marca = marca;
+        this.controle = controle;
+        this.estado = estado;
+    }
 
     public String getTipo() {
         return tipo;

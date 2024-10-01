@@ -73,7 +73,7 @@ public class Bancos {
             return this.altura = altura;
         }
         else{
-            System.out.println("Sistema elétrico desativado, altura atual: "+this.altura);
+            System.out.println("Sistema elétrico desativado, altura não ajustada (altura: "+this.altura+")");
             return this.altura;
         }
     }
