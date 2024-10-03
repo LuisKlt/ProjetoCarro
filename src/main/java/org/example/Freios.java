@@ -53,6 +53,7 @@ public class Freios {
     }
 
     public double verificarDesgaste() {
+        System.out.println("Nível de desgaste: "+this.nivelDeDesgaste);
         return nivelDeDesgaste;
     }
 
@@ -76,7 +77,7 @@ public class Freios {
     public void acionaFreio(boolean carroMovimento){
         if(carroMovimento){
             System.out.println("Freio acionado, desgaste aumentou");
-            this.setNivelDeDesgaste(this.verificarDesgaste() - 1);
+            this.setNivelDeDesgaste(this.nivelDeDesgaste - 1);
             this.acionado = true;
             carro.parar();
             pneus.ajustarPressao(pneus.getPressao()+0.2);

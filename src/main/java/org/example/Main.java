@@ -63,13 +63,20 @@ public class Main {
         portas.abrir(sistemaEletrico.isTrava());
 
         System.out.println("\n-- Direção --");
-
+        sistemaDeDirecao.ativaAssistido(sistemaEletrico.getBateria());
+        sistemaDeDirecao.ajustarDirecao(-100);
 
         System.out.println("\n-- Transmissão --");
+        sistemaDeTransmissao.aumentarMarcha();
+        sistemaDeTransmissao.diminuirMarcha();
 
         System.out.println("\n-- Pneus --");
+        pneus.ajustarPressao(21);
+        pneus.substituirPneus(carro.isMovimento(), freios.isAcionado());
 
         System.out.println("\n-- Suspenção --");
+        suspencao.ajustarAltura(sistemaEletrico.getBateria(), 140);
+        suspencao.substituirSuspencao(carro.isMovimento());
 
     }
 

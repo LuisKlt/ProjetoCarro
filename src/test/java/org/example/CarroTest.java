@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 public class CarroTest {
 
     private Carro carro = new Carro("BMW M3", "Azul", "AAA-111", 2022, 15050, false, false);;
-    private SistemaEletrico sistemaEletrico = new SistemaEletrico(13.8, 80, "12V", "Pioneiro", true, true);
+    private SistemaEletrico sistemaEletrico = new SistemaEletrico(13.8, 80, "12V", "Pioneiro", true, false);
     private SistemaDeTransmissao sistemaDeTransmissao = new SistemaDeTransmissao("Automático", "Magnésio", "BMW", 6, false, 0);
     private Portas portas = new Portas(2, "Alumínio", "Azul", "Normal", false);
-    private Motor motor = new Motor("Inline 6", 510, 3000, "BMW", false);
+    private Motor motor = new Motor("Inline 6", 510, 3000, "BMW", true);
     private Freios freios = new Freios("Disco", "Cerâmica", "Brembo", 370, 5, true);
-    private SistemaDeCombustivel sistemaDeCombustivel = new SistemaDeCombustivel("Gasolina", "Bosch", 45, 50, false);
+    private SistemaDeCombustivel sistemaDeCombustivel = new SistemaDeCombustivel("Gasolina", "Bosch", 45, 10, false);
     private Painel painel = new Painel("Digital", "", "BMW", false, false);
     private Bancos bancos = new Bancos(2, "Couro", "Preto", "Padrão", "Novo", "Levantado", 2.5);
     private Luzes luzes = new Luzes("Luz de freio", 6, "Vermelho", false, "Led");
@@ -22,6 +22,7 @@ public class CarroTest {
     @Test
     public void ligarMotorTest(){
         System.out.println("\n ligarMotorTest");
+
         boolean Motor = motor.ligar(sistemaDeCombustivel.isEstado(), sistemaEletrico.getBateria());
         Assertions.assertFalse(Motor, "O motor não deve ligar");
     }
@@ -49,9 +50,9 @@ public class CarroTest {
     @Test
     public void ajustarAlturaTest(){
         System.out.println("\n ajustarAlturaTest");
-        double Exp = 3.5;
+        double Exp = bancos.getAltura();
         double Altura = bancos.ajustarAltura(sistemaEletrico.getBateria(), Exp);
-        Assertions.assertEquals(Exp, Altura, "Nova altura deve ser 3.5");
+        Assertions.assertEquals(Exp, Altura, "Nova altura deve ser 2.5");
     }
 
     @Test
@@ -112,6 +113,11 @@ public class CarroTest {
     public void acionaFreioTest(){
         System.out.println("\n acionaFreioTest");
         double Exp = freios.verificarDesgaste();
+        sistemaDeCombustivel.ligar();
+        motor.ligar(sistemaDeCombustivel.isEstado(), sistemaEletrico.getBateria());
+        carro.ligar(sistemaEletrico.getBateria(),sistemaDeTransmissao.getMarcha(), motor.verificarEstado(), freios.isAcionado(), carro.isLigado());
+        freios.desacionaFreio();
+        carro.acelerar(carro.isLigado(), freios.isAcionado());
         freios.acionaFreio(carro.isMovimento());
         double Freio = freios.verificarDesgaste();
         Assertions.assertNotEquals(Exp, Freio, "O desgaste não deve ser o mesmo que antes da frenagem");

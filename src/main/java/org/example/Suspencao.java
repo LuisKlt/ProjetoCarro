@@ -39,14 +39,6 @@ public class Suspencao {
         this.marca = marca;
     }
 
-    public double getAltura() {
-        return altura;
-    }
-
-    public void setAltura(double altura) {
-        this.altura = altura;
-    }
-
     public int getRegidez() {
         return regidez;
     }
@@ -55,9 +47,21 @@ public class Suspencao {
         this.regidez = regidez;
     }
 
-    //métodos com integração
-    public int verificarEstado(){
-        return this.getRegidez();
+    public double getAltura() {
+        return altura;
+    }
+
+    public void ajustarAltura(boolean sistemaEletrico,double altura) {
+        if(!sistemaEletrico){
+            System.out.println("Ligue o sistema elétrico para ajustar a suspenção");
+        }
+        else if(altura > 100 && altura < 180){
+            System.out.println("Altura minima é 100cm e a máxima é 180cm");
+        }
+        else{
+            System.out.println("Altura ajustada, nova altura: "+altura);
+            this.altura = altura;
+        }
     }
 
     public boolean substituirSuspencao(boolean carroMovimento){

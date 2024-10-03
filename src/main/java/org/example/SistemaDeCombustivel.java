@@ -68,7 +68,7 @@ public class SistemaDeCombustivel {
     }
 
     public boolean isEstado() {
-        return estado;
+        return this.estado;
     }
 
     public boolean ligar() {

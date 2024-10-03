@@ -62,13 +62,26 @@ public class SistemaDeTransmissao {
         return marcha;
     }
 
-    public void setMarcha(int marcha) {
-        this.marcha = marcha;
-    }
+    public void aumentarMarcha(){
+        if(this.marcha > 6){
+            System.out.println("Tranmissão já esta na ultíma marcha");
+        }
+        else{
+            int novaMarcha = this.marcha + 1;
+            System.out.println("Marcha aumentada, marcha atual: "+novaMarcha);
+            this.marcha = novaMarcha;
+        }
 
-    //métodos com integração
-    public void trocarMarcha(int marcha){
-        this.setMarcha(marcha);
+    }
+    public void diminuirMarcha(){
+        if(this.marcha < 0){
+            System.out.println("Tranmissão já esta no neutro");
+        }
+        else{
+            int novaMarcha = this.marcha - 1;
+            System.out.println("Marcha diminuida, marcha atual: "+novaMarcha);
+            this.marcha = novaMarcha;
+        }
     }
 
     public void substituirComponente(String componente){
