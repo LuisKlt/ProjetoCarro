@@ -16,47 +16,47 @@ public class CarroTest {
     private Bancos bancos = new Bancos(2, "Couro", "Preto", "Padrão", "Novo", "Levantado", 2.5);
     private Luzes luzes = new Luzes("Luz de freio", 6, "Vermelho", false, "Led");
     private Pneus pneus = new Pneus("255/35R19", "Radial", "Toyo", "Novo", 22.9);
-    private SistemaDeDirecao sistemaDeDirecao = new SistemaDeDirecao("Elétrica", "Carbono", "BMW", false, 900, 0, "Novo");
+    private SistemaDeDirecao sistemaDeDirecao = new SistemaDeDirecao("Elétrica", "Carbono", "BMW", false, 18, 0);
     private Suspencao suspencao = new Suspencao("Coilovers","Aço", "Bilstein", 120, 5);
 
     @Test
     public void ligarMotorTest(){
-        System.out.println("\nligarMotorTest");
-        boolean Motor = motor.ligar(sistemaDeCombustivel.isEstado(), sistemaEletrico.verificarBateria());
+        System.out.println("\n ligarMotorTest");
+        boolean Motor = motor.ligar(sistemaDeCombustivel.isEstado(), sistemaEletrico.getBateria());
         Assertions.assertFalse(Motor, "O motor não deve ligar");
     }
     @Test
     public void ligarCarroTest(){
-        System.out.println("\nligarCarroTest");
-        boolean Carro = carro.ligar(sistemaEletrico.verificarBateria(),sistemaDeTransmissao.getMarcha(), motor.verificarEstado(), freios.isAcionado(), carro.isLigado());
+        System.out.println("\n ligarCarroTest");
+        boolean Carro = carro.ligar(sistemaEletrico.getBateria(),sistemaDeTransmissao.getMarcha(), motor.verificarEstado(), freios.isAcionado(), carro.isLigado());
         Assertions.assertFalse(Carro, "O carro não deve ligar");
     }
 
     @Test
     public void desligarMotorTest(){
-        System.out.println("\ndesligarMotorTest");
+        System.out.println("\n desligarMotorTest");
         boolean Motor = motor.desligar(carro.isMovimento());
         Assertions.assertFalse(Motor, "O motor deve estar desligado");
     }
 
     @Test
     public void desligarCarroTest(){
-        System.out.println("\ndesligarCarroTest");
+        System.out.println("\n desligarCarroTest");
         boolean Carro = carro.desligar(freios.isAcionado(), carro.isMovimento());
         Assertions.assertFalse(Carro, "O carro deve estar desligado");
     }
 
     @Test
     public void ajustarAlturaTest(){
-        System.out.println("\najustarAlturaTest");
+        System.out.println("\n ajustarAlturaTest");
         double Exp = 3.5;
-        double Altura = bancos.ajustarAltura(sistemaEletrico.verificarBateria(), Exp);
+        double Altura = bancos.ajustarAltura(sistemaEletrico.getBateria(), Exp);
         Assertions.assertEquals(Exp, Altura, "Nova altura deve ser 3.5");
     }
 
     @Test
     public void substituirBateriaTest(){
-        System.out.println("\nsubstituirBateriaTest");
+        System.out.println("\n substituirBateriaTest");
         String Exp = "Concluída";
         String Bateria = sistemaEletrico.substituirBateria(carro.isLigado());
         Assertions.assertSame(Exp, Bateria, "A troca deve ser concluída");
@@ -64,54 +64,55 @@ public class CarroTest {
 
     @Test
     public void abrirPortaTest(){
-        System.out.println("\nabrirPortaTest");
+        System.out.println("\n abrirPortaTest");
         portas.abrir(sistemaEletrico.isTrava());
-        boolean Portas = portas.getEstado();
-        Assertions.assertFalse(Portas, "A porta não deve abrir");
+        String Exp = "Fechada";
+        String Portas = portas.getEstado();
+        Assertions.assertSame(Exp, Portas, "A porta não deve abrir");
     }
 
     @Test
     public void ligarLuzesTest(){
-        System.out.println("\nligarLuzesTest");
-        luzes.ligar(sistemaEletrico.verificarBateria());
+        System.out.println("\n ligarLuzesTest");
+        luzes.ligar(sistemaEletrico.getBateria());
         boolean Luzes = luzes.isEstado();
         Assertions.assertTrue(Luzes, "As luzes devem ligar");
     }
 
     @Test
     public void substituirPneusTest(){
-        System.out.println("\nsubstituirPneusTest");
+        System.out.println("\n substituirPneusTest");
         boolean Pneus = pneus.substituirPneus(carro.isMovimento(), freios.isAcionado());
         Assertions.assertTrue(Pneus, "Os pneus devem ser substituídos");
     }
 
     @Test
     public void substituirSuspencaoTest(){
-        System.out.println("\nsubstituirPneusTest");
+        System.out.println("\n substituirPneusTest");
         boolean Suspencao = suspencao.substituirSuspencao(carro.isMovimento());
         Assertions.assertTrue(Suspencao, "A suspenção deve ser substituída");
     }
 
     @Test
     public void ligarDisplayTest(){
-        System.out.println("\nligarDisplayTest");
-        boolean Display = painel.ligarDisplay(sistemaEletrico.verificarBateria());
+        System.out.println("\n ligarDisplayTest");
+        boolean Display = painel.ligarDisplay(sistemaEletrico.getBateria());
         Assertions.assertTrue(Display, "O display deve ligar");
     }
 
     @Test
     public void atualizaInfoTest(){
-        System.out.println("\natualizaInfoTest");
-        String Display = painel.atualizaInfo(carro.getModelo(), bancos.getAltura(), luzes.getIntensidade(), pneus.verificarPressao(), sistemaDeDirecao.getAngulo(), suspencao.getAltura(),
-                freios.isAcionado(), motor.getPotencia(), sistemaDeCombustivel.verificarNivel(), sistemaDeTransmissao.getMarcha(), portas.getEstado());
+        System.out.println("\n atualizaInfoTest");
+        String Display = painel.atualizaInfo(carro.getModelo(), bancos.getAltura(), luzes.getIntensidade(), pneus.getPressao(), sistemaDeDirecao.getAngulo(), suspencao.getAltura(),
+                freios.getAcionado(freios.isAcionado()), motor.getPotencia(), sistemaDeCombustivel.verificarNivel(carro.isMovimento()), sistemaDeTransmissao.getMarcha(), portas.getEstado());
         System.out.println(Display);
         Assertions.assertNotNull(Display, "O display não pode estar vazio");
     }
     @Test
     public void acionaFreioTest(){
-        System.out.println("\nacionaFreioTest");
+        System.out.println("\n acionaFreioTest");
         double Exp = freios.verificarDesgaste();
-        freios.acionaFreio();
+        freios.acionaFreio(carro.isMovimento());
         double Freio = freios.verificarDesgaste();
         Assertions.assertNotEquals(Exp, Freio, "O desgaste não deve ser o mesmo que antes da frenagem");
     }

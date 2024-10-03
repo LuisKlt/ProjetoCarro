@@ -21,8 +21,13 @@ public class SistemaEletrico {
     public boolean isTrava() {
         return trava;
     }
-    public void setTrava(boolean trava) {
-        this.trava = trava;
+    public void liberaTrava() {
+        System.out.println("Trava liberada");
+        this.trava = false;
+    }
+    public void acionaTrava() {
+        System.out.println("Trava acionada");
+        this.trava = true;
     }
     public double getVoltagem() {
         return voltagem;
@@ -56,12 +61,19 @@ public class SistemaEletrico {
         this.marca = marca;
     }
 
-    public boolean verificarBateria() {
+    public boolean getBateria() {
         return this.estado;
     }
 
-    public boolean ligar() {
-        return this.estado = this.testarSistema();
+    public boolean ligar(boolean testarSistema) {
+        if(testarSistema){
+            System.out.println("Sistema elétrico ligado");
+            return this.estado = true;
+        }
+        else{
+            System.out.println("Verifique o sistema eletrico. Sistema elétrico desligado");
+            return this.estado = false;
+        }
     }
 
     public void desligar() {
@@ -69,8 +81,8 @@ public class SistemaEletrico {
     }
 
     //métodos com integração
-    public String substituirBateria(boolean carro){
-        if (!carro) {
+    public String substituirBateria(boolean carroLigado){
+        if (!carroLigado) {
             this.setCapacidade(100);
             this.setVoltagem(14.0);
             System.out.println("Bateria substituída");
@@ -87,11 +99,14 @@ public class SistemaEletrico {
             System.out.println("Sistema Elétrico OK");
             return true;
         }
-        else{
-            System.out.println("Sistema Elétrico com defeito");
+        else if(this.getCapacidade() == 0){
+            System.out.println("Bateria descarregada");
             return false;
         }
-
+        else{
+            System.out.println("Voltagem incorreta");
+            return false;
+        }
     }
 
 }

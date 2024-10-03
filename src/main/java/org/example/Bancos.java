@@ -62,15 +62,24 @@ public class Bancos {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-
-    //métodos com integração
     public String ajustarEncosto(String posicao){
         return posicao;
     }
     public double ajustarAltura(boolean sistemaEletrico, double altura){
         if (sistemaEletrico){
-            System.out.println("Nova altura: "+altura);
-            return this.altura = altura;
+            if(altura < 0){
+                System.out.println("Valor mínimo para altura é 0, altura não ajustada (altura: "+this.altura+")");
+                return this.altura;
+            }
+            else if(altura > 10){
+                System.out.println("Valor máximo para altura é 10, altura não ajustada (altura: "+this.altura+")");
+                return this.altura;
+            }
+            else{
+                System.out.println("Nova altura: "+altura);
+                return this.altura = altura;
+            }
+
         }
         else{
             System.out.println("Sistema elétrico desativado, altura não ajustada (altura: "+this.altura+")");

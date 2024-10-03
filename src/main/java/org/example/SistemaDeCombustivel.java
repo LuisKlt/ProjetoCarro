@@ -40,19 +40,37 @@ public class SistemaDeCombustivel {
         this.capacidade = capacidade;
     }
 
-    public double verificarNivel() {
-        return nivelDeCombustivel;
+
+    public double verificarNivel(boolean carroMovimento) {
+        if(carroMovimento){
+            double nivel = this.nivelDeCombustivel - 10;
+            System.out.println("Carro em movimento, nível do combustivel diminuiu para "+nivel);
+            return this.nivelDeCombustivel = nivel;
+        }
+        else{
+            System.out.println("Nível de combustível "+this.nivelDeCombustivel);
+            return this.nivelDeCombustivel;
+        }
     }
 
-    public void setNivelDeCombustivel(double nivelDeCombustivel) {
-        this.nivelDeCombustivel = nivelDeCombustivel;
+    public void setNivelDeCombustivel(double nivelDeCombustivel, double capacidade) {
+        if (nivelDeCombustivel > capacidade){
+            System.out.println("Nível de combustível não pode ser maior que a capacidade do tanque, nível atual: "+this.nivelDeCombustivel);
+        }
+        else{
+            this.nivelDeCombustivel = nivelDeCombustivel;
+        }
+
+    }
+
+    public double getNivel(){
+        return this.nivelDeCombustivel;
     }
 
     public boolean isEstado() {
         return estado;
     }
 
-    //métodos com integração
     public boolean ligar() {
         if(nivelDeCombustivel > 0){
             System.out.println("Sistema de combustível ligado");
@@ -68,8 +86,18 @@ public class SistemaDeCombustivel {
         return false;
     }
 
-    public void abastecer(double quantidade){
-        this.setNivelDeCombustivel(verificarNivel() + quantidade);
+    public void abastecer(double quantidade, double nivel, double capacidade, boolean carroMovimento){
+        if (quantidade + nivel > capacidade){
+            System.out.println("Quantidade ultrapassa a capacidade do tanque, impossivel abastecer, nível atual: "+this.nivelDeCombustivel);
+        }
+        else if(carroMovimento){
+            System.out.println("Pare o carro para abastecer, nível atual: "+this.nivelDeCombustivel);
+        }
+        else{
+            double novoNivel = nivel + quantidade;
+            System.out.println("Tanque abastecido, nível atual: "+novoNivel);
+            this.nivelDeCombustivel = novoNivel;
+        }
     }
 
     public void substituirTanque(){

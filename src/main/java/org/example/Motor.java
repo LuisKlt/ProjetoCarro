@@ -52,8 +52,8 @@ public class Motor {
     }
 
     //métodos com integração
-    public boolean ligar(boolean sistemaDeCombustivel, boolean sistemaEletrico) {
-        if (sistemaDeCombustivel && sistemaEletrico){
+    public boolean ligar(boolean sistemaDeCombustivel, boolean verificarBateria) {
+        if (sistemaDeCombustivel && verificarBateria){
             System.out.println("Motor ligado");
             return this.ligado = true;
         }

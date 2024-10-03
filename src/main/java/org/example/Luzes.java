@@ -27,8 +27,17 @@ public class Luzes {
         return intensidade;
     }
 
-    public void setIntensidade(int intensidade) {
-        this.intensidade = intensidade;
+    public void ajustarIntensidade(boolean luzes, int intensidade) {
+        if(!luzes){
+            System.out.println("Luzes desligadas. Intensidade das luzes não ajustada (intensidade: "+this.intensidade+")");
+        }
+        else if(intensidade >= 0 && intensidade <= 10){
+            System.out.println("Intensidade das luzes ajustada, nova intensidade: "+intensidade);
+            this.intensidade = intensidade;
+        }
+        else{
+            System.out.println("O valor '"+intensidade+"' é inválido. Intensidade das luzes não ajustada (intensidade: "+this.intensidade+")");
+        }
     }
 
     public String getCor() {

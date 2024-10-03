@@ -8,28 +8,14 @@ public class SistemaDeDirecao {
     private boolean assistido;
     private double relacao;
     private double angulo;
-    private String estado;
 
-    public SistemaDeDirecao(String tipo, String material, String marca, boolean assistido, double relacao, double angulo, String estado) {
+    public SistemaDeDirecao(String tipo, String material, String marca, boolean assistido, double relacao, double angulo) {
         this.tipo = tipo;
         this.material = material;
         this.marca = marca;
         this.assistido = assistido;
         this.relacao = relacao;
         this.angulo = angulo;
-        this.estado = estado;
-    }
-
-    public double getAngulo() {
-        return angulo;
-    }
-
-    public String verificarEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
     public String getTipo() {
@@ -56,14 +42,6 @@ public class SistemaDeDirecao {
         this.marca = marca;
     }
 
-    public boolean isAssistido() {
-        return assistido;
-    }
-
-    public void setAssistido(boolean assistido) {
-        this.assistido = assistido;
-    }
-
     public double getRelacao() {
         return relacao;
     }
@@ -72,9 +50,39 @@ public class SistemaDeDirecao {
         this.relacao = relacao;
     }
 
+    public boolean isAssistido() {
+        return assistido;
+    }
+
+    public void ativaAssistido(boolean sistemaEletrico) {
+        if(sistemaEletrico){
+            System.out.println("Direção assistida ativada");
+            this.assistido = true;
+        }
+        else{
+            System.out.println("Ligue o sistema elétrico para ativar a direção assistida");
+        }
+    }
+    public void desativaAssistido() {
+        System.out.println("Direção assistida desativada");
+        this.assistido = false;
+    }
+
+    public double getAngulo() {
+        return angulo;
+    }
 
     public void ajustarDirecao(double angulo){
-        this.angulo = angulo;
+        if (angulo < -450){
+            System.out.println("Ângulo mínimo é -450º, ângulo atual: "+this.angulo);
+        }
+        else if (angulo > 450){
+            System.out.println("Ângulo máximo é 450º, ângulo atual: "+this.angulo);
+        }
+        else{
+            System.out.println("Ângulo ajustado, novo ângulo: "+angulo);
+            this.angulo = angulo;
+        }
     }
 
     public void substituirComponente(String componente){

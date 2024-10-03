@@ -48,11 +48,12 @@ public class Pneus {
         this.estado = estado;
     }
 
-    public double verificarPressao() {
+    public double getPressao() {
         return pressao;
     }
 
     public void ajustarPressao(double novaPressao) {
+        System.out.println("Nova pressão: "+novaPressao);
         this.pressao = novaPressao;
     }
 

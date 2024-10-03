@@ -59,7 +59,26 @@ public class Carro {
         return this.ligado;
     }
 
-    //métodos com integração
+    public void acelerar(boolean carro, boolean freio){
+        if (carro && !freio){
+            System.out.println("Acelerando, carro em movimento");
+            this.setQuilometragem(this.quilometragem + 100);
+            this.setMovimento(true);
+        }
+        else if(!carro){
+            System.out.println("Não é possível acelerar com o carro desligado");
+            this.setMovimento(false);
+        }
+        else{
+            System.out.println("Não é possível acelerar com o freio acionado");
+            this.setMovimento(false);
+        }
+    }
+    public void parar(){
+        System.out.println("O carro parou");
+        this.setMovimento(false);
+    }
+
     public boolean ligar(boolean sistemaEletrico, int sistemaDeTransmissao, boolean motor, boolean freio, boolean carro) {
         if(sistemaEletrico && sistemaDeTransmissao == 0 && motor && freio && !carro) {
             System.out.println("Carro ligado");

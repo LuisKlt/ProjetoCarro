@@ -48,14 +48,19 @@ public class Portas {
         this.tipo = tipo;
     }
 
-    public boolean getEstado() {
-        return estado;
+    public String getEstado() {
+        if (this.estado){
+            return "Aberta";
+        }
+        else{
+            return "Fechada";
+        }
     }
 
     //métodos com integração
     public void abrir(boolean trava){
         if (trava){
-            System.out.println("Trava ativa");
+            System.out.println("Trava acionada, destrave para abrir");
             this.estado = false;
         }
         else{

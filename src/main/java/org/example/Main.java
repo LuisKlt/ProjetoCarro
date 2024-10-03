@@ -12,36 +12,65 @@ public class Main {
         Painel painel = new Painel("Digital", "", "BMW", false, false);
         Pneus pneus = new Pneus("255/35R19", "Radial", "Toyo", "Novo", 22.9);
         Portas portas = new Portas(2, "Alumínio", "Azul", "Normal", false);
-        SistemaDeCombustivel sistemaDeCombustivel = new SistemaDeCombustivel("Gasolina", "Bosch", 59, 22.5, true);
-        SistemaDeDirecao sistemaDeDirecao = new SistemaDeDirecao("Elétrica", "Carbono", "BMW", false, 900, 0, "Novo");
+        SistemaDeCombustivel sistemaDeCombustivel = new SistemaDeCombustivel("Gasolina", "Bosch", 59, 22.5, false);
+        SistemaDeDirecao sistemaDeDirecao = new SistemaDeDirecao("Elétrica", "Carbono", "BMW", false, 18, 0);
         SistemaDeTransmissao sistemaDeTransmissao = new SistemaDeTransmissao("Automático", "Magnésio", "BMW", 6, false, 0);
-        SistemaEletrico sistemaEletrico = new SistemaEletrico(13.8, 80, "12V", "Pioneiro", true, false);
+        SistemaEletrico sistemaEletrico = new SistemaEletrico(13.8, 0, "12V", "Pioneiro", false, true);
         Suspencao suspencao = new Suspencao("Coilovers","Aço", "Bilstein", 120, 5);
 
-        motor.ligar(sistemaDeCombustivel.isEstado(), sistemaEletrico.verificarBateria());
+        System.out.println("\n-- Sistema de combustível --");
+        sistemaDeCombustivel.verificarNivel(carro.isMovimento());
+        sistemaDeCombustivel.ligar();
+        sistemaDeCombustivel.abastecer(10, sistemaDeCombustivel.getNivel(), sistemaDeCombustivel.getCapacidade(), carro.isMovimento());
 
-        motor.desligar(carro.isMovimento());
-
+        System.out.println("\n-- Sistema elétrico --");
+        sistemaEletrico.testarSistema();
         sistemaEletrico.substituirBateria(carro.isLigado());
+        sistemaEletrico.ligar(sistemaEletrico.testarSistema());
 
-        carro.ligar(sistemaEletrico.verificarBateria(),sistemaDeTransmissao.getMarcha(), motor.verificarEstado(), freios.isAcionado(), carro.isLigado());
+        System.out.println("\n-- Motor --");
+        motor.ligar(sistemaDeCombustivel.isEstado(), sistemaEletrico.getBateria());
 
-        bancos.ajustarAltura(sistemaEletrico.verificarBateria(), 3);
+        System.out.println("\n-- Carro --");
+        carro.ligar(sistemaEletrico.getBateria(), sistemaDeTransmissao.getMarcha(), motor.verificarEstado(), freios.isAcionado(), carro.isLigado());
+        carro.acelerar(carro.isLigado(), freios.isAcionado());
 
+        System.out.println("\n-- Freio --");
+        freios.desacionaFreio();
+
+        System.out.println("\n-- Carro --");
+        carro.acelerar(carro.isLigado(), freios.isAcionado());
+
+        System.out.println("\n-- Freio --");
+        freios.acionaFreio(carro.isMovimento());
+
+        System.out.println("\n-- Painel --");
+        painel.ligarDisplay(sistemaEletrico.getBateria());
+        painel.atualizaInfo(carro.getModelo(), bancos.getAltura(), luzes.getIntensidade(), pneus.getPressao(), sistemaDeDirecao.getAngulo(),suspencao.getAltura(),
+                freios.getAcionado(freios.isAcionado()), motor.getPotencia(), sistemaDeCombustivel.getNivel(), sistemaDeTransmissao.getMarcha(), portas.getEstado());
+        System.out.println(painel.getDisplay());
+
+        System.out.println("\n-- Bancos --");
+        bancos.ajustarAltura(sistemaEletrico.getBateria(), 3.2);
+
+        System.out.println("\n-- Luzes --");
+        luzes.ligar(sistemaEletrico.getBateria());
+        luzes.ajustarIntensidade(luzes.isEstado(), 8);
+
+        System.out.println("\n-- Portas --");
+        portas.abrir(sistemaEletrico.isTrava());
+        sistemaEletrico.liberaTrava();
         portas.abrir(sistemaEletrico.isTrava());
 
-        luzes.ligar(sistemaEletrico.verificarBateria());
+        System.out.println("\n-- Direção --");
 
-        pneus.substituirPneus(carro.isMovimento(), freios.isAcionado());
 
-        suspencao.substituirSuspencao(carro.isMovimento());
+        System.out.println("\n-- Transmissão --");
 
-        painel.ligarDisplay(sistemaEletrico.verificarBateria());
+        System.out.println("\n-- Pneus --");
 
-        painel.atualizaInfo(carro.getModelo(), bancos.getAltura(), luzes.getIntensidade(), pneus.verificarPressao(), sistemaDeDirecao.getAngulo(), suspencao.getAltura(),
-                freios.isAcionado(), motor.getPotencia(), sistemaDeCombustivel.verificarNivel(), sistemaDeTransmissao.getMarcha(), portas.getEstado());
+        System.out.println("\n-- Suspenção --");
 
-        freios.acionaFreio();
     }
 
 }
